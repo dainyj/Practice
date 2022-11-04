@@ -1,0 +1,195 @@
+기본 if
+1. 숫자(점수) 입력 후 문자(학점) 출력
+int score = 75;
+
+		if (score >= 90) {
+			System.out.println("A");
+		} else if (score >= 80) {
+			System.out.println("B");
+		} else if (score >= 70) {
+			System.out.println("C");
+		} else if (score >= 60) {
+			System.out.println("D");
+		} else {
+			System.out.println("F");
+		}
+    
+2. 숫자(점수) 입력 후 문자(학점) 출력, +- 추가
+int score = 92;
+		
+		if (score >=90) {
+			System.out.println("A");
+				if (score >= 95) {
+					System.out.println("+");
+				} else {
+					System.out.println("-");
+				}
+		} else {
+			System.out.println("B");
+			if (score >=80) {
+				System.out.println("+");
+			} else {
+				System.out.println("-");
+			}
+		}    
+    
+3. 실수 입력 수 문자 출력
+if (w <= 50.80) {
+			System.out.println("Flyweight");
+		} else if (w <= 61.23) {
+			System.out.println("Lightweight");
+		} else if (w <= 72.57) {
+			System.out.println("Middleweight");
+		} else if (w <= 88.45) {
+			System.out.println("Cruiserweight");
+		} else if (w > 88.45) {
+			System.out.println("Heavyweight");
+		}
+    
+4. 실수 2개 입력 후 문자 출력(입력한 실수를 단계별로 구분)
+방법1 
+		if (n1 >= 4.0 && n2 >= 4.0) {
+			System.out.println("A");
+		} else if (n1 >= 3.0 && n2 >= 3.0) {
+			System.out.println("B");
+		} else {
+			System.out.println("C");
+		}
+
+ 방법2	
+		if (n1 >= 4.0) {
+			if (n2 >= 4.0) {
+				System.out.println("A");
+			} else if (n2 >= 3.0) {
+				System.out.println("B");
+			} else if (n2 < 3.0) {
+				System.out.println("C");
+			}
+
+		} else if (n1 >= 3.0) {
+			if (n2 >= 3.0) {
+				System.out.println("B");
+			} else if (n2 < 3.0) {
+				System.out.println("C");
+			}
+		} else {
+			System.out.println("C");
+		}    
+    
+5. 문자 숫자 입력 후 문자 출력(문자로 성별을 구분하고 숫자로 나이 판단)
+import java.util.Scanner;
+
+public class Ex533_if {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		char gender = sc.next().charAt(0);
+		int age = sc.nextInt();
+		sc.close();
+//방법1
+		if (gender == 'M') {
+			if (age >= 18) {
+				System.out.println("MAN");
+			} else {
+				System.out.println("BOY");
+			}
+		} else {
+			if (age >= 18) {
+				System.out.println("WOMAN");
+			} else {
+				System.out.println("GIRL");
+			}
+
+		}
+//방법2 (&&을 사용)
+		//if (gender == 'M' && age>=18) {
+		//System.out.println("MAN");
+		//} else if (gender =='M' && age<18) {
+		//System.out.println("BOY");
+		//}	else if (gender =='W' && age>=18) {
+		//System.out.println("WOMAN");
+    //} else if (gender =='W' && age<18) {
+		//System.out.println("GIRL");
+		
+	}
+}
+
+6. 문자 입력(char타입) 문자 출력
+import java.util.Scanner;
+
+public class Ex534_if_switch {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		char inp = sc.next().charAt(0); 
+		//charAt(0)은 next()의 문자열 중에서 0번째 문자만 적용하겠다는 뜻
+		sc.close();
+    
+		if (inp == 'A') {
+			System.out.println("Excellent");
+		} else if (inp == 'B') {
+			System.out.println("Good");
+		} else if (inp == 'C') {
+			System.out.println("Usually");
+		} else if (inp == 'D') {
+			System.out.println("Effort");
+		} else if (inp == 'F') {
+			System.out.println("Failure");
+		} else {
+			System.out.println("error");
+		}
+	}
+}
+
+7. 기본 if
+public class IfEx {
+	public static void main(String[] args) {
+		int num = 8;
+
+		if (num > 9) {
+			System.out.println("A");
+			// if문 첫번째 조건에서 true가 나오면 뒤의 조건은 건너뛴다.
+		} else if (num > 7) {
+			System.out.println("C");
+		} else {
+			System.out.println("D");
+		}
+		System.out.println("B");
+	}
+
+}
+
+8. 3개의 숫자 크기 비교
+import java.util.Scanner;
+
+public class Ex632_if {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int i1 = sc.nextInt();
+		int i2 = sc.nextInt();
+		int i3 = sc.nextInt();
+		sc.close();
+
+		System.out.println(i1 + " " + i2 + " " + i3);
+
+		if (i1 > i2) {
+			if (i2 > i3) {
+				System.out.println(i3);
+			} else {
+				System.out.println(i2);
+			}
+		} else {
+			if (i1 > i3) {
+				System.out.println(i3);
+			} else {
+				System.out.println(i1);
+			}
+		}
+
+//방법2
+// 삼항연산자 사용
+		int min = (i1 > i2) ? ((i2 > i3) ? i3 : i2) : ((i1 > i3) ? i3 : i1);
+		System.out.println(min);
+//방법3		
+//		(i1 < i2 && i1 < i3) ? i1 : (i2 < i3) ? i2 : i3;
+	}
+
+}
